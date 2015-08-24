@@ -1,5 +1,5 @@
 'use strict';
-angular.module('ag.service', []).directive('articleSlide', ['$timeout', '$interval', function($timeout, $interval) {
+angular.module('ag.service', []).directive('articleSlide', ['$timeout', function($timeout) {
     var _maxHeight = 216;
     var _top = 0;
 
@@ -77,9 +77,6 @@ angular.module('ag.service', []).directive('articleSlide', ['$timeout', '$interv
      * @return {[type]}       [description]
      */
     function articleSlideDetect(scope, elem) {
-        if (scope.mid == 32650) {
-            // console.log('32650');
-        }
         if (scope.longContent && scope.imgLoaded) return;
         var content = elem.find('.html');
         if (!scope.imgLoaded)
@@ -132,8 +129,7 @@ angular.module('ag.service', []).directive('articleSlide', ['$timeout', '$interv
         scope: {
             longContent: '=messageSlide',
             type: '=messageType',
-            imgLoaded: '=messageImg',
-            mid: '=messageId'
+            imgLoaded: '=messageImg'
         },
         link: function(scope, elem, ctrl) {
             $timeout(function() {
